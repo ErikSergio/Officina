@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link rel="stylesheet" th:href=@{/css/tipoIntervento/tipoIntervento.css} />
+<head
+	th:replace="fragments/myH.html :: headerfiles(title=#{pageTitle.tipoIntervento})">
+<meta charset="utf-8" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<nav th:replace="fragments/myH.html :: nav(index='/default')"></nav>
+	<section th:if="${tipoIntervento}" th:object="${tipoIntervento}">
+		<div class="title">
+			<h1 th:text="*{nome}">
+				<b></b>
+			</h1>
+			<div>
+				<b>Descrizione: </b>
+				<p th:text="*{descrizione}">Descrizione</p>
+			</div>
+			<div>
+				<b>Costo: </b>
+				<p th:text="*{Costo} + €">Costo</p>
+			</div>
+		</div>
+	<div class="but2" id="topbut">
+					<span><a th:href="@{/tipoInterventi}"><button  id="invio">Back</button></a></span>
+				</div>
+
+	</section>
+	<footer th:replace="fragments/myH.html :: fondo(index='/default')"></footer>
+</body>
+</html>

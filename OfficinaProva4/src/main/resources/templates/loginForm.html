@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/myH.html :: headerfiles(title='Login Utente')">
+</head>
+<style>
+.title {
+	height: 15vh;
+	width: 100%;
+	display: table;
+	background-image: url("/images/userOp/m.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.title p {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 35px;
+	color: black;
+}
+
+.box {
+	display: flex;
+	justify-content: center;
+}
+
+.container {
+	width: 50%;
+	padding: 14px 16px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.element {
+	padding: 5px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+input {
+	width: 50%;
+	height: 2vh;
+	border-radius: 5px;
+	border-color: #DCDCDC;
+	background-color: #DCDCDC;
+	outline: none;
+}
+
+.button:hover {
+	width: 15%;
+	height: 2.5vh;
+	border: none;
+	border-radius: 5px;
+	background-color: #7CFC00;
+	color: white;
+}
+
+.button {
+	width: 15%;
+	height: 2.5vh;
+	border: none;
+	border-radius: 5px;
+	background-color: white;
+	color: #7CFC00;
+}
+</style>
+<body>
+	<nav th:fragment="nav(index)" class="topnav">
+		<a  th:href="@{/index}">Home</a><a href="#informazioni">Informazioni</a> 
+		<div class="dropdown">
+			<button class="dropbtn">
+				Utente <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<div sec:authorize="isAnonymous()">
+					<a th:href="@{/login}" th:text="#{index.login}">Login</a> <a
+						th:href="@{/register}" th:text="#{index.register}">Registrati</a>
+				</div>
+				<div sec:authorize="isAuthenticated()">
+					<a th:href="@{/logout}">Esci</a>
+				</div>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">
+				Follow Us! <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="#"><img th:src="@{/images/home/facebook.png}"
+					height="16px" width="16px"> Facebook</a> <a href="#"><img
+					th:src="@{/images/home/instagram.png}" height="16px" width="16px">
+					Instagram</a>
+			</div>
+		</div>
+	</nav>
+	<div class="title">
+		<p>
+			<b>Login</b>
+		</p>
+	</div>
+	<form th:action="@{/login}" method="POST">
+		<div class="box">
+			<div class="container">
+				<div class="element">
+					<span><input name="username" type="text"
+						placeholder="Username" required /></span>
+				</div>
+				<div class="element">
+					<span><input name="password" type="password"
+						placeholder="Password" required /></span>
+				</div>
+				<div class="element">
+					<span><button type="submit" class="button">
+							<b>LOGIN</b>
+						</button></span>
+				</div>
+			</div>
+		</div>
+	</form>
+	<footer th:replace="fragments/myH.html :: fondo(index='/')"></footer>
+</body>
+</html>

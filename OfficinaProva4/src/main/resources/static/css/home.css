@@ -1,0 +1,490 @@
+* {
+	margin: 0;
+	font-family: verdana, sans-serif;
+	overflow-x: hidden; 
+	  box-sizing: border-box;
+	
+}
+body{
+  margin: 0;
+  padding: 0;
+
+  background-color: black;
+}
+.topnav {
+	background-color: black;
+	overflow: hidden;
+	width: 100%;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+	float: left;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+	background-color: #ddd;
+	color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+	background-color: #DC143C;
+	color: white;
+}
+
+.dropdown {
+	float: right;
+	overflow: hidden;
+}
+
+.dropdown2 {
+	overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+	font-size: 16px;
+	border: none;
+	outline: none;
+	color: white;
+	padding: 14px 18px;
+	background-color: inherit;
+	font-family: inherit;
+	/* Important for vertical align on mobile phones */
+	margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Add a background color to navbar links on hover */
+.dropdown:hover .dropbtn {
+	background-color: #DC143C;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 90px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+	float: none;
+	color: black;
+	padding: 12px 4px;
+	text-decoration: none;
+	display: block;
+	text-align: center;
+}
+button {
+	background-color: #DC143C;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #FF0000;
+}
+.but {
+	display: flex;
+	justify-content: center;
+	padding-top: 15px;
+}
+.but2 {
+	display: flex;
+	justify-content: center;
+	
+}
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+	background-color: #DC143C;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.paragraph {
+	padding: 5px;
+	width: 50%;
+	border: solid;
+	border-color: black;
+	margin: auto;
+}
+
+.paragraph p {
+	padding: 2px;
+	font-size: 18px;
+}
+
+.header{
+  height: 600px;
+  background-image: url("/images/home/Officina39.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.testoheader{
+  align-content: center; 
+  justify-content: center;
+  padding-top: 150px;
+
+}
+
+.testoheader h1{
+  font-size: 80px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 4%;
+  padding-bottom: 1%;
+   font-weight: bold;
+   
+}
+
+.testoheader h2{
+  font-size: 30px;
+  color: black;
+  text-align: center;
+  padding-top: 200px;
+}
+
+.testoheader p{
+  font-weight: bold;
+  top: 50%;
+  color: white;
+  text-align: center;
+  font-size: 21px;
+  margin-top: 5px;
+  padding: 5px;
+  
+}
+.postheader{
+	height: 500px;
+
+}
+
+.motto{
+	 align-content: center; 
+  justify-content: center;
+  max-height: 600px;
+  
+}
+.frase{
+  top: 30%;
+  color: white;
+  text-align: center;
+  font-size: 25px;
+   padding-top: 40px;
+   font-style: oblique;
+}
+.frase2{
+  top: 30%;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  padding-top: 6px;
+}
+
+.attivita{
+  text-decoration: overline;
+  padding-top: 50px;
+  	 top: 50%;
+  color: black;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+}
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.descrizione{
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.titolo{
+  position: absolute;
+  font-size: 45px;
+  font-weight: bold;
+  z-index: 10;
+  transform: scaleY(0);
+  transition: all 0.2s ease-in-out;
+  font-family: 'Fjalla One', sans-serif;
+  mix-blend-mode: screen;
+  background-color: white;
+}
+.sottotitolo{
+  position: absolute;
+  font-size: 20px;
+  background-color: white;
+  color: white;
+  margin-top: 90px;
+  z-index: 10;
+  transform: scaleY(0);
+  transition: all 0.3s ease-in-out;
+}
+.card:hover .titolo, .card:hover .sottotitolo{
+  transform: scaleY(1);
+}
+.grid-container {
+  grid-template-columns: auto auto;
+  height: 90%;
+  display: inline-grid;
+  justify-content: space-evenly;
+  padding: 0;
+  margin-left: 2px;
+  margin-right: 2px;
+  position: relative;
+}
+
+.foto{
+  width: 100%;
+  height: auto;
+  animation: zoomin 60s linear infinite;
+  transform: scale(1);
+}
+
+.titoloPiscina{
+  margin-top: 100px;
+  font-size: 30px;
+  padding-top: 30px;
+  color: white;
+}
+
+.descrizionePiscina{
+  font-size: 20px;
+  color: white;
+}
+
+.titoloSpa{
+  margin-top: 100px;
+  font-size: 30px;
+  padding-top: 30px;
+  color: black;
+}
+
+.descrizioneSpa{
+  font-size: 20px;
+  color: black;
+}
+.titoloCalcio{
+  margin-top: 100px;
+  font-size: 30px;
+  padding-top: 30px;
+  color: white;
+}
+
+.descrizioneCalcio{
+  font-size: 20px;
+  color: white;
+}
+.titoloPalestra{
+  margin-top: 100px;
+  font-size: 30px;
+  padding-top: 30px;
+  color: white;
+}
+
+.descrizionePalestra{
+  font-size: 20px;
+  color: white;
+}
+
+.titoloTennis{
+  margin-top: 100px;
+  font-size: 30px;
+  padding-top: 30px;
+  color: black;
+}
+
+.descrizioneTennis{
+  font-size: 20px;
+  color: black;
+}
+.seemore{
+  font-size: 20px;
+  border-radius: 30px;
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  margin-bottom: 20px;
+}
+
+#seeSpa, #seePiscine, #seeTennis{
+  background-color: red;
+
+}
+
+#seeSpa:hover, #seeTennis:hover{
+  background-color: black;
+  color: white;
+}
+
+#seePiscine:hover{
+  background-color: white;
+  color: black;
+}
+#seeGym, #seeCalcio{
+  background-color: black;
+}
+
+#seeGym:hover, #seeCalcio:hover{
+  background-color: white;
+  color: black;
+
+}
+
+
+
+
+@keyframes zoomin{
+  0%{
+    transform: scale(1);
+  }
+  25%{
+    transform: scale(1.2);
+  }
+  50%{
+    transform: scale(1.4);
+  }
+  75%{
+    transform: scale(1.6);
+  }
+  100%{
+    transform: scale(1.8);
+  }
+}
+
+#desc1{
+  background-color: whitesmoke;
+}
+
+#desc2{
+  background-color: red;
+}
+
+#desc3{
+  background-color: black;
+}
+
+#desc4{
+  background-color: red;
+}
+#desc5{
+  background-color: white;
+}
+p {
+	text-align: center;
+}
+
+.slideshow {
+	text-align: center;
+	height: 700px;
+	margin: 15px 50px 50px 25px;
+}
+
+.mySlides {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+.fondo {
+	background-color: #333;
+	overflow: hidden;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+}
+
+.fondo a {
+	float: right;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 10px 12px;
+	text-decoration: none;
+	font-size: 14px;
+}
+
+.fondo a:hover {
+	color: gray;
+	text-decoration: none;
+}
+
+
+
+.portfolio {
+  margin: 8px -16px;
+  
+}
+.tit{
+	text-align: center;
+}
+
+/* Add padding BETWEEN each column */
+.portfolio,
+.portfolio > .columnportfolio {
+  padding: 8px;
+  padding-top: 30px;
+}
+
+/* Create four equal columns that floats next to each other */
+.columnportfolio {
+  float: left;
+  width: 25%;
+}
+.contentportfolio{
+	height: auto;
+}
+/* Clear floats after rows */ 
+.portfolio:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.contentportfolio {
+  background-color: white;
+  padding: 10px;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 900px) {
+  .columnportfolio {
+    width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .columnportfolio {
+    width: 100%;
+  }
+}
+

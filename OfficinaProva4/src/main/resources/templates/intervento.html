@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link rel="stylesheet" th:href="@{/css/intervento/intervento.css}" />
+<head
+	th:replace="fragments/myH.html :: headerfiles(title='pageTitle.intervento')">
+</head>
+<meta charset="utf-8" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<nav th:replace="fragments/myH.html :: nav(index='/default')"></nav>
+	<section>
+		<div class="grid-container" id="grid" th:if="${intervento}" th:object="${intervento}">
+         <div class="card">
+          <img id="foto3" class="foto" th:src="@{${intervento.photosImagePath}}" style="width:100%" >
+          
+         </div>
+         <div id="desc1" class="descrizione">
+		<h1 class="title" th:text="*{titolo}">
+		<b>Nome</b>
+		</h1>
+		<b>Tipologia intervento: </b>
+		<p th:text="*{tipoIntervento.nome}">TipoIntervento</p>
+		<div sec:authorize="hasAuthority('ADMIN')"><b>Cliente: </b> <p class="infot" th:text="${intervento.credential.user.nome + ' ' + intervento.credential.user.cognome}"></p></div>	
+	    <b>Descrizione: </b>
+		<p th:text="*{descrizione}">Descrizione</p>
+	    <b>Meccanico: </b> <p th:text="${intervento.meccanico.nome + ' ' + intervento.meccanico.cognome}"></p>
+		<b>Data intervento</b>
+		<p th:text="${intervento.dataRisultato}">19-07-1999</p>
+		</div>
+		<!-- <div class="row">
+				<div class="column">
+				<b>Tipologia intervento: </b>
+						<p class="infot" th:text="*{tipoIntervento.nome}">
+						<div sec:authorize="hasAuthority('ADMIN')"><b>Cliente: </b> <p class="infot" th:text="${intervento.credential.user.nome + ' ' + intervento.credential.user.cognome}"></p></div>
+					
+					<b>Descrizione: </b>
+					<p class="infot" th:text="*{descrizione}">....</p>
+						<b>Meccanico: </b> <p th:text="${intervento.meccanico.nome + ' ' + intervento.meccanico.cognome}"></p>
+					<b>Data intervento</b>
+					<p class="infot"  th:text="${intervento.dataRisultato}">19-07-1999</p>
+				</div>
+			</div>
+		</div> -->
+			
+    </div>
+	</section>
+	<div class="but2" id="topbut">
+					<span><a th:href="@{/interventi}"><button  id="invio">Back</button></a></span>
+				</div>
+	<footer th:replace="fragments/myH.html :: fondo(index='/default')"></footer>
+</body>
+</html>

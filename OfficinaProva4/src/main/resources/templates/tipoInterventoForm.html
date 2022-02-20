@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link th:href="@{/css/adminOp/meccanicoForm.css}" rel="stylesheet">
+<head
+	th:replace="fragments/myH.html :: headerfiles(title=#{title.formtipoIntervento})">
+<meta charset="utf-8" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<nav th:replace="fragments/myH.html :: nav(index='/default')"></nav>
+	<section>
+		<div class="title">
+			<p>Inserisci i dati della tipologia di intervento</p>
+		</div>
+		<form th:action="@{/admin/tipoIntervento}" method="POST"
+			th:object="${tipoIntervento}">
+			<div th:if="${#fields.hasGlobalErrors()}">
+				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}"
+					style="text-align: center; color: red">...</p>
+			</div>
+			<div class="inserisci">
+				<div class="row">
+					<div class="col-1">
+						<label>Nome:</label>
+					</div>
+					<div class="col-2">
+						<input type="text" th:field="*{nome}" />
+					</div>
+					<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+				</div>
+				
+				<div class="row">
+					<div class="col-1">
+						<label>Descrizione:</label>
+					</div>
+					<div class="col-2">
+						<textarea th:field="*{descrizione}" class="bio"
+							style="height: 100px; width: 50%" /></textarea>
+					</div>
+					<div th:if="${#fields.hasErrors('descrizione')}"
+						th:errors="*{descrizione}"></div>
+				</div>
+				<div class="row">
+					<div class="col-1">
+						<label>Costo(€):</label>
+					</div>
+					<div class="col-2">
+						<input type="text" th:field="*{costo}"/>
+					</div>
+					<div th:if="${#fields.hasErrors('costo')}" th:errors="*{costo}"></div>
+				</div>
+				<div class="row">
+					<div class="col-1">
+						<label>Meccanico:</label>
+					</div>
+					<div class="col-2">
+						<select id="meccanico" th:field="*{meccanico}">
+							<option th:each="meccanico : ${meccanici}" th:value="${meccanico.id}"
+								th:text="${meccanico.nome + ' ' + meccanico.cognome}"></option>
+						</select>
+					</div>
+				</div>
+				<div class="but">
+						<span><button type="submit" id="invio">Invio</button></span>
+					</div>
+					</div>
+		</form>
+		
+	</section>
+	<footer th:replace="fragments/myH.html :: fondo(index='/')"></footer>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link rel="stylesheet" th:href="@{/css/meccanico/meccanici.css}" />
+<head
+	th:replace="fragments/myH.html :: headerfiles(title=#{header.tipoInterventi})">
+<meta charset="utf-8" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<nav th:fragment="nav(index)" class="topnav">
+		<a th:href="@{/index}">Home</a> <a href="#informazioni">Informazioni</a>
+		<a class="active" href="tipoInterventi" th:href="@{/tipoInterventi}">TipologieInterventi</a> <span
+				sec:authorize="hasAnyAuthority('ADMIN')">
+				<a href="meccanici" th:href="@{/meccanici}">Meccanici</a>
+				<a href="Interventi" th:href="@{/interventi}">Interventi</a> </span>
+			<a href="Interventi" th:href="@{/prenotazioni}">Prenotazioni</a>
+		<span
+				sec:authorize="hasAuthority('ADMIN')"><a href="areaAdmin"
+				th:href="@{/admin/areaAdmin}">MenuAdmin</a></span>
+				<span sec:authorize="hasAnyAuthority('DEFAULT')">
+				 <a href="Interventi" th:href="@{/interventi}">TuoiInterventi</a> 
+		  <a href="Interventi" th:href="@{/interventi}">TuePrenotazioni</a> 
+		 
+		</span>
+		<div class="dropdown">
+			<button class="dropbtn">
+				Utente <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<div sec:authorize="isAnonymous()">
+					<a th:href="@{/login}" th:text="#{index.login}">Login</a> <a
+						th:href="@{/register}" th:text="#{index.register}">Registrati</a>
+				</div>
+				<div sec:authorize="isAuthenticated()">
+					<a th:href="@{/logout}">Esci</a>
+				</div>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">
+				Follow Us! <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="#"><img th:src="@{/images/home/facebook.png}"
+					height="16px" width="16px"> Facebook</a> <a href="#"><img
+					th:src="@{/images/home/instagram.png}" height="16px" width="16px">
+					Instagram</a>
+			</div>
+		</div>
+	</nav>
+	<section>
+		<div class="list">
+			<p>
+				<b>Lista delle Tipologie di Interventi</b>
+			</p>
+			<ul>
+				<li th:each="tipoIntervento : ${tipoInterventi}"><a href="tipoIntervento.html"
+					th:href="@{'/tipoIntervento' + '/' + ${tipoIntervento.id}}"> <span
+						th:text="${tipoIntervento.nome}">Nome</span></a> <span class="canc"
+					sec:authorize="hasAuthority('ADMIN')"><a
+						href="tipoInterventi.html"
+						th:href="@{'/admin/tipoIntervento/' + ${tipoIntervento.id}}"> Elimina</a></span></li>
+			</ul>
+		</div>
+	</section>
+	<div sec:authorize="hasAnyAuthority( 'ADMIN')" class="row">
+					<div class="col-5">
+						<a href="tipoInterventoForm" th:href="@{/admin/tipoIntervento}">Aggiungi
+							una nuova Tipologia di Intervento</a>
+					</div>
+				</div>
+				
+				<div class="but3" id="topbut">
+					<span><a th:href="@{/prenotazione}"><button  id="back">Prenota il tuo intervento</button></a></span>
+				</div>
+	<footer th:replace="fragments/myH.html :: fondo(index='/default')"></footer>
+</body>
+</html>

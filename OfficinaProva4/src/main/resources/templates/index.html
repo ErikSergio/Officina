@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="utf-8" content="width=device-width, initial-scale=1">
+<title>Officina</title>
+<link th:href="@{/css/home.css}" rel="stylesheet">
+</head>
+<body>
+	<nav th:fragment="nav(index)" class="topnav" id="nav">
+		<a class="active" th:href="@{/index}">Home</a><a href="#informazioni">Informazioni</a> 
+		 <span sec:authorize="hasAnyAuthority( 'ADMIN')">
+		  <a href="meccanici" th:href="@{/meccanici}">Meccanici</a>
+		  <a href="tipoInterventi" th:href="@{/tipoInterventi}">TipologieInterventi</a>
+		  <a href="Interventi" th:href="@{/interventi}">Interventi</a> 
+		  <a href="Interventi" th:href="@{/prenotazioni}">Prenotazioni</a>
+		</span>
+		 <span sec:authorize="hasAnyAuthority('DEFAULT' )">
+		  <a href="tipoInterventi" th:href="@{/tipoInterventi}">TipologieInterventi</a>
+		  <a href="Interventi" th:href="@{/interventi}">TuoiInterventi</a> 
+		  <a href="prenotazioni" th:href="@{/prenotazioni}">TuePrenotazioni</a> 
+		</span>
+		<span
+				sec:authorize="hasAuthority('ADMIN')"><a href="areaAdmin"
+				th:href="@{/admin/areaAdmin}">MenuAdmin</a></span>
+					
+		<div class="dropdown">
+			<button class="dropbtn">
+				Utente <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<div sec:authorize="isAnonymous()">
+					<a th:href="@{/login}" th:text="#{index.login}">Login</a> <a
+						th:href="@{/register}" th:text="#{index.register}">SignIn</a>
+				</div>
+				<div sec:authorize="isAuthenticated()">
+					<a th:href="@{/logout}">Esci</a>
+				</div>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">
+				Follow Us! <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="#"><img th:src="@{/images/home/facebook.png}"
+					height="16px" width="16px"> Facebook</a> <a href="#"><img
+					th:src="@{/images/home/instagram.png}" height="16px" width="16px">
+					Instagram</a>
+			</div>
+		</div>	
+	</nav>
+	<div class="header" id="head">
+		<div class="testoheader">
+			<h1>BENVENUTO!</h1>
+      <p>La tua officina di fiducia, sempre accanto a te.</p>
+      <p>NEL MOMENTO DEL BISOGNO, NOI CI SIAMO SEMPRE...</p>
+    <div class="but">
+					<span><a href="#section1"><button  id="invio">Explore</button></a></span>
+				</div>
+		</div>
+	</div>
+	<div class="postheader" id="section1">
+	<!-- <h2 class="attivita">IL NOSTRO MOTTO</h2> -->
+	<div class="motto">
+	<h3 class="frase">"Tutto nella vita è altrove, e ci si arriva in auto."</h3>
+	<h3 class="frase2">E.B.White</h3>
+	<div class="portfolio">
+  <div class="columnportfolio">
+    <div class="contentportfolio">
+      <img src="/images/home/Officina16.jpg" alt="Mountains" style="width:100%">
+      <h3 class="tit">PROFESSIONALITA'</h3>
+      <p>Personale specializzato</p>
+    </div>
+  </div>
+  <div class="columnportfolio">
+    <div class="contentportfolio">
+      <img src="/images/home/Officina32.jpg" alt="Lights" style="width:100%">
+      <h3 class="tit">GARANZIA</h3>
+      <p>Cliente prima di tutto</p>
+    </div>
+  </div>
+   <div class="columnportfolio">
+    <div class="contentportfolio">
+      <img src="/images/home/Officina40.jpg" alt="Lights" style="width:100%">
+      <h3 class="tit">DISPONIBILITA'</h3>
+      <p>Sempre connessi</p>
+    </div>
+  </div>
+  <div class="columnportfolio">
+    <div class="contentportfolio">
+      <img src="/images/home/Officina33.jpeg" alt="Lights" style="width:100%">
+      <h3 class="tit">DETERMINAZIONE</h3>
+      <p>Sempre concentrati sull'obiettivo</p>
+    </div>
+  </div>
+  </div>
+  </div>
+    <div class="but2" id="topbut">
+					<span><a href="#nav"><button  id="invio">Top</button></a></span>
+				</div>
+  </div>
+	<!-- <section>
+        <div class="grid-container" id="grid">
+         <div class="card">
+          <p class="titolo">PRENDITI CURA DI TE!</p>
+          
+          <img id="foto3" class="foto" src="/images/home/Officina6.jpeg" style="width:100%" >
+         </div>
+         <div id="desc1" class="descrizione">
+          <h2 class="titoloSpa">CENTRO BENESSERE</h2>
+          <p class="descrizioneSpa">Desideriamo offrirti tutto il relax e la spensieratezza di sempre, in totale tranquillità e salute,con idromassaggi, sale relax e solarium naturale</p>
+          <a id="seeSpa" href="Spa.html" class="seemore">Info/Prenota</a>
+        </div>
+        <div id="desc2" class="descrizione">
+          <h2 class="titoloPalestra">GYM & FITNESS FLOOR</h2>
+          <p class="descrizionePalestra">Iscriviti in palestra, corsi individuali e di gruppo per adulti e bambini, mantieni in forma la tua mente e il tuo corpo.</p>
+          <a id="seeGym" href="#" class="seemore">Info/Prenota</a>
+        </div>
+        <div class="card">
+          <p class="titolo">ALLENA IL TUO CORPO!</p>
+         
+          <img id="foto3" class="foto" src="/images/home/Officina8.jpeg" style="width:100%" >
+        </div>  
+        <div class="card">
+          <p class="titolo">TUFFATI CON NOI!</p>
+          
+          <img id="foto3" class="foto" src="/images/home/Officina10.jpeg" style="width:100%" >
+         </div>
+         <div id="desc3" class="descrizione">
+          <h2 class="titoloPiscina">PISCINE</h2>
+          <p class="descrizionePiscina">Vieni a farti una bella nuotata nelle nostre piscine; tra nuoto libero, corsi, acqua gym e tanto altro.</p>
+          <a id="seePiscine" href="#" class="seemore">Info/Prenota</a>
+        </div>
+        <div id="desc4" class="descrizione">
+          <h2 class="titoloCalcio">CAMPI DA CALCIO</h2>
+          <p class="descrizioneCalcio">Organizza due squadre, campo e pallone li mettiamo noi, e sarai pronto a vivere di emozioni come i grandi calciatori professionisti.</p>
+          <a id="seeCalcio" href="#" class="seemore">Info/Prenota</a>
+        </div>
+        <div class="card">
+          <p class="titolo">FAI GOAL ANCHE TU!</p>
+          <img id="foto3" class="foto" src="/images/home/Officina11.jpeg" style="width:100%" >
+        </div> 
+        <div class="card">
+          <p class="titolo">IMPUGNA LA RACCHETTA!</p>
+          <img id="foto3" class="foto" src="/images/home/Officina12.jfif" style="width:100%" >
+         </div>
+         <div id="desc5" class="descrizione">
+          <h2 class="titoloTennis">TENNIS E PADEL</h2>
+          <p class="descrizioneTennis">Tra il classico tennis e la novità del padel, impugna la tua racchetta e cogli la pallina al balzo!Lezioni, partite e tanto altro...</p>
+          <a id="seeTennis" href="#" class="seemore">Info/Prenota</a>
+        </div> 
+        </div>
+      </section>
+	<section> -->
+	
+	
+
+
+		<!-- gallery 
+		<div class="slideshow">
+			<img class="mySlides" th:src="@{/images/home/clinica1.jpg}"
+				style="width: auto; height: 680px"> <img class="mySlides"
+				th:src="@{/images/home/clinica2.jpg}"
+				style="width: auto; height: 680px"> <img class="mySlides"
+				th:src="@{/images/home/clinica3.jpg}"
+				style="width: auto; height: 680px"> <img class="mySlides"
+				th:src="@{/images/home/clinica4.jpg}"
+				style="width: auto; height: 680px">
+
+			<script>
+          	var slideIndex = 0;
+          	carousel();
+
+          	function carousel() {
+            	var i;
+            	var x = document.getElementsByClassName("mySlides");
+            	for (i = 0; i < x.length; i++) {
+              	x[i].style.display = "none";
+            	}
+            	slideIndex++;
+            	if (slideIndex > x.length) {slideIndex = 1}
+            	x[slideIndex-1].style.display = "block";
+            	setTimeout(carousel, 2000); // Change image every 2 seconds
+          	}
+          </script>-->
+		
+	<footer th:replace="fragments/myH.html :: fondo(index='/default')"></footer>
+</body>
+</html>

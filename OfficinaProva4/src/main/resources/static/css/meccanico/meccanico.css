@@ -1,0 +1,171 @@
+.body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	
+}
+*{
+	overflow-x: hidden; 
+}
+.flex-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 25px 15px 25px 15px;
+	margin: 0;
+}
+
+.foto {
+	padding: 15px 15px 15px 15px;
+	border-style: solid;
+	border-width: 5px;
+	border-color: #333;
+	height: 200px;
+}
+
+.datiArt {
+	font-size: 16px;
+	text-align: left;
+}
+
+#info {
+	margin: 50px 25px 25px 50px;
+}
+
+.bio-title {
+	font-size: 25px;
+	text-align: center;
+}
+
+.bio {
+	text-align: left;
+	margin-bottom: 25px;
+	width: 65%;
+}
+
+.flex-bio {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	margin: 0;
+}
+
+.gal_title {
+	margin: 0 auto;
+	text-align: center;
+	font-size: 25px;
+	margin-bottom: 15px;
+	margin-top: 25px;
+}
+
+.column {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 30px 20px 30px 20px;
+	margin: 0;
+}
+
+.el {
+	padding: 5px 5px;
+}
+
+.quadro {
+	padding: 15px 15px 15px 15px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: #333;
+}
+
+.quadro img {
+	height: auto;
+	width: 450px;
+}
+
+.title {
+	background-color: #333;
+	text-align: center;
+}
+
+.title a {
+	color: white;
+	text-decoration: none;
+}
+
+.title a:hover {
+	color: gray;
+	text-decoration: none;
+}
+
+.grid-container {
+  grid-template-columns: auto auto;
+  height: 90%;
+  display: inline-grid;
+  justify-content: space-evenly;
+  padding: 0;
+  margin-left: 2px;
+  margin-right: 2px;
+  position: relative;
+  padding-top: 30px;
+  width:100%;
+}
+
+.foto{
+  width: 70%;
+  height: auto;
+  animation: zoomin 60s linear infinite;
+  transform: scale(1);
+}
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  
+}
+
+.descrizione{
+	
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.titolo{
+  position: absolute;
+  font-size: 45px;
+  font-weight: bold;
+  z-index: 10;
+  transform: scaleY(0);
+  transition: all 0.2s ease-in-out;
+  font-family: 'Fjalla One', sans-serif;
+  mix-blend-mode: screen;
+  background-color: white;
+}
+
+.but2 {
+	display: flex;
+	justify-content: center;
+	padding-top: 30px;
+	
+}
+
+button {
+	background-color: #DC143C;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #FF0000;
+}
