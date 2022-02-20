@@ -57,12 +57,12 @@
 						<a href="meccanico.html" th:href="@{'/meccanico' + '/' + ${meccanico.id}}">
 							<span th:text="${meccanico.nome}">Nome</span> <span
 							th:text="${meccanico.cognome}"> Cognome</span>
-						</a> <span class="canc" sec:authorize="hasAuthority('ADMIN')"><a
-							href="meccanico.html" th:href="@{'/admin/meccanico/' + ${meccanico.id}}">
-								Elimina</a></span>
+						</a>
+						
 					</div>
 				</li>
 			</ul>
+			
 		</div>
 	</section>
 	<div sec:authorize="hasAnyAuthority( 'ADMIN')" class="row">

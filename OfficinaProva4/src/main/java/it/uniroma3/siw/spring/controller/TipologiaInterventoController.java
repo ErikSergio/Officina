@@ -29,13 +29,7 @@ public class TipologiaInterventoController {
 
     @Autowired
 	private MeccanicoService meccanicoService;
-    
-    /**
-     * azione dell'amministratore
-     * Crea un nuovo oggetto collezione e reindirizza alla pagina collezioneForm
-     * @param model
-     * @return string
-     */
+ 
     @RequestMapping(value="/admin/tipoIntervento", method = RequestMethod.GET)
     public String addtipoIntervento(Model model) {
     	model.addAttribute("tipoIntervento", new TipologiaIntervento());
@@ -43,35 +37,21 @@ public class TipologiaInterventoController {
         return "tipoInterventoForm";
     }
 
-    /**
-     * un utente vuole visualizzare la pagina di una specifica tipologia di esame
-     * @param id
-     * @param model
-     * @return string
-     */
+   
     @RequestMapping(value = "/tipoIntervento/{id}", method = RequestMethod.GET)
     public String gettipoIntervento(@PathVariable("id") Long id, Model model) {
     	model.addAttribute("tipoIntervento", this.tipologiaInterventoService.tipoInterventoPerId(id));
     	return "tipoIntervento";
     }
 
-    /**
-     * un utente vuole visualizzare la lista di tutte le tipologie di esami salvate
-     * @param model
-     * @return string
-     */
+
     @RequestMapping(value = "/tipoInterventi", method = RequestMethod.GET)
     public String getCollezioni(Model model) {
     		model.addAttribute("tipoInterventi", this.tipologiaInterventoService.tuttiOrdinati());
     		return "tipoInterventi";
     }
     
-    /**
-     * un amministratore vuole cancellare una tipologia di esami salvata
-     * @param id
-     * @param model
-     * @return string
-     */
+    
     @RequestMapping(value = "/admin/tipoIntervento/{id}", method = RequestMethod.GET)
     public String deleteCollezione(@PathVariable("id") Long id, Model model) {
     	this.tipologiaInterventoService.cancella(id);

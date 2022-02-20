@@ -18,7 +18,7 @@ public interface MeccanicoRepository extends CrudRepository<Meccanico, Long> {
 
 	public List<Meccanico> findByNomeAndCognome(String nome, String cognome);
 
-	//riporta tutti i medici ordinati con cognomi in ordine alfabetico
+	
 	public List<Meccanico> findByOrderByCognomeAsc();
 	
 }

@@ -3,21 +3,28 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <link rel="stylesheet" th:href="@{/css/intervento/interventi.css}" />
 <head
-	th:replace="fragments/myH.html :: headerfiles(title=#{header.interventi})">
+	th:replace="fragments/myH.html :: headerfiles(title=#{header.prenotazioni})">
 <meta charset="utf-8" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<nav th:fragment="nav(index)" class="topnav">
 		<a th:href="@{/index}">Home</a> <a href="#informazioni">Informazioni</a>
-		<a href="tipoInterventi" th:href="@{/tipoInterventi}">TipologieInterventi</a> <span
-				sec:authorize="hasAnyAuthority( 'ADMIN')"><a class="active"
-			href="Interventi" th:href="@{/interventi}">Interventi</a> </span>
+		<span
+				sec:authorize="hasAnyAuthority('ADMIN')">
+				<a href="meccanici" th:href="@{/meccanici}">Meccanici</a></span>
+		<a  href="tipoInterventi" th:href="@{/tipoInterventi}">TipologieInterventi</a> <span
+				sec:authorize="hasAnyAuthority('ADMIN')">
+				<a  href="Interventi" th:href="@{/interventi}">Interventi</a> 
+				<a class="active" href="Interventi" th:href="@{/prenotazioni}">Prenotazioni</a>
+				</span>
+			
 		<span
 				sec:authorize="hasAuthority('ADMIN')"><a href="areaAdmin"
 				th:href="@{/admin/areaAdmin}">MenuAdmin</a></span>
-				<span sec:authorize="hasAnyAuthority('DEFAULT', )">
-		  <a  href="Interventi" th:href="@{/interventi}">TuoiInterventi</a> 
-		  <a class="active" href="prenotazioni" th:href="@{/prenotazioni}">TuePrenotazioni</a> 
+				<span sec:authorize="hasAnyAuthority('DEFAULT')">
+				 <a href="Interventi" th:href="@{/interventi}">TuoiInterventi</a> 
+		  <a href="Interventi" th:href="@{/prenotazioni}">TuePrenotazioni</a> 
+		 
 		</span>
 		<div class="dropdown">
 			<button class="dropbtn">
@@ -48,22 +55,23 @@
 	<section>
 		<div class="list">
 			<p>
-				<b>Prenotazioni</b>
+				<b id="interventititolo">Prenotazioni</b>
 			</p>
 			<ul>
 				<li th:each="prenotazione : ${prenotazioni}">
 					<div>
-						<a href="prenotazione.html" th:href="@{'/prenotazione' + '/' + ${prenotazione.id}}">
-							<span th:text="${prenotazione.credential.user.nome}">Nome</span>
-							 <span th:text="${prenotazione.credential.user.cognome}">Cognome</span>
-							 <span th:text="${prenotazione.tipoInervento}">TipoIntervento</span>
-						</a> <span class="canc" sec:authorize="hasAuthority('ADMIN')"><a
-							href="prenotazione.html" th:href="@{'/admin/prenotazione/' + ${prenotazione.id}}">
-								Elimina</a></span>
+						<a href="#">
+						<b><span th:text="${prenotazione.credential.user.nome}">Nome</span> </b>
+						 <b><span th:text="${prenotazione.credential.user.cognome}">Nome</span></b>
+						<span th:text="${prenotazione.tipoIntervento.nome}">TipoIntervento</span>
+						<span th:text="${prenotazione.dataPrenotazione}">TipoIntervento</span></a> 
+						
 					</div>
 				</li>
 			</ul>
+		
 		</div>
+	
 	</section>
 	<!--  	<div sec:authorize="hasAnyAuthority( 'ADMIN')" class="row">
 					<div class="col-5">

@@ -9,16 +9,22 @@
 <body>
 	<nav th:fragment="nav(index)" class="topnav">
 		<a th:href="@{/index}">Home</a> <a href="#informazioni">Informazioni</a>
-		<a href="tipoInterventi" th:href="@{/tipoInterventi}">TipologieInterventi</a> <span
-				sec:authorize="hasAnyAuthority( 'ADMIN')"><a class="active"
-			href="Interventi" th:href="@{/interventi}">Interventi</a> </span>
-			<a href="Interventi" th:href="@{/prenotazioni}">Prenotazioni</a>
+		<span
+				sec:authorize="hasAnyAuthority('ADMIN')">
+				<a href="meccanici" th:href="@{/meccanici}">Meccanici</a></span>
+		<a  href="tipoInterventi" th:href="@{/tipoInterventi}">TipologieInterventi</a> <span
+				sec:authorize="hasAnyAuthority('ADMIN')">
+				<a class="active" href="Interventi" th:href="@{/interventi}">Interventi</a> 
+				<a href="Interventi" th:href="@{/prenotazioni}">Prenotazioni</a>
+				</span>
+			
 		<span
 				sec:authorize="hasAuthority('ADMIN')"><a href="areaAdmin"
 				th:href="@{/admin/areaAdmin}">MenuAdmin</a></span>
-				<span sec:authorize="hasAnyAuthority('DEFAULT', )">
-		  <a class="active" href="Interventi" th:href="@{/interventi}">TuoiInterventi</a> 
+				<span sec:authorize="hasAnyAuthority('DEFAULT')">
+				 <a href="Interventi" th:href="@{/interventi}">TuoiInterventi</a> 
 		  <a href="Interventi" th:href="@{/prenotazioni}">TuePrenotazioni</a> 
+		 
 		</span>
 		<div class="dropdown">
 			<button class="dropbtn">
@@ -49,17 +55,14 @@
 	<section>
 		<div class="list">
 			<p>
-				<b>Interventi</b>
+				<b id="interventititolo">Interventi</b>
 			</p>
 			<ul>
 				<li th:each="intervento : ${interventi}">
 					<div>
 						<a href="intervento.html" th:href="@{'/intervento' + '/' + ${intervento.id}}">
 							<span th:text="${intervento.titolo}">Titolo</span>
-							 
-						</a> <span class="canc" sec:authorize="hasAuthority('ADMIN')"><a
-							href="intervento.html" th:href="@{'/admin/intervento/' + ${intervento.id}}">
-								Elimina</a></span>
+						</a> 
 					</div>
 				</li>
 			</ul>

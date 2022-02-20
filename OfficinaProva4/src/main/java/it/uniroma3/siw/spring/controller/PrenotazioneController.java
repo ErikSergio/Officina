@@ -58,6 +58,7 @@ public class PrenotazioneController {
     	model.addAttribute("tipoInterventi", this.tipologiaInterventoService.tuttiOrdinati());
         return "prenotazioneForm";
     }
+ 
 
    
     @RequestMapping(value = "/prenotazione/{id}", method = RequestMethod.GET)
@@ -95,6 +96,7 @@ public class PrenotazioneController {
     	this.prenotazioneValidator.validate(prenotazione, bindingResult);
         if (!bindingResult.hasErrors()) {
         	this.prenotazioneService.inserisci(prenotazione);
+        	model.addAttribute("prenotazioni", this.prenotazioneService.tutti());
             return "prenotazioneSuccessful";
         }
       

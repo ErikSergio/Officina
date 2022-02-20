@@ -33,36 +33,21 @@ public class MeccanicoController {
 
 
 	
-	/**
-	 * l'amministratore vuole inserire i dati di un nuovo medico
-	 * @param model
-	 * @return String
-	 */
+
 	@RequestMapping(value="/admin/meccanico", method = RequestMethod.GET)
 	public String addMeccanico(Model model) {
 	    model.addAttribute("meccanico", new Meccanico());
 	    return "meccanicoForm";
 	}
 
-	/**
-	 * un utente (anche un amministratore) vuole visionare la pagina di uno
-	 * specifico medico
-	 * @param id
-	 * @param model
-	 * @return String
-	 */
+	
     @RequestMapping(value = "/meccanico/{id}", method = RequestMethod.GET)
     public String getMeccanico(@PathVariable("id") Long id, Model model) {
     	model.addAttribute("meccanico", this.meccanicoService.meccanicoPerId(id));
     	return "meccanico";
     }
     
-    /**
-     * l'amministratore vuole cancellare un medico dal db
-     * @param id
-     * @param model
-     * @return String
-     */
+ 
     @RequestMapping(value = "/admin/meccanico/{id}", method = RequestMethod.GET)
     public String deleteMeccanico(@PathVariable("id") Long id, Model model) {
     	this.meccanicoService.cancella(id);
@@ -70,30 +55,14 @@ public class MeccanicoController {
     	return "meccanici";
     }
 
-    /**
-     * un utente (anche un amministratore) vuole visualizzare la 
-     * lista di tutti i medici salvati all'interno del db
-     * della clinica
-     * @param model
-     * @return String
-     */
+ 
     @RequestMapping(value = "/meccanici", method = RequestMethod.GET)
     public String getMeccanici(Model model) {
     		model.addAttribute("meccanici", this.meccanicoService.tuttiOrdinati());
     		return "meccanici";
     }
     
-    /**
-     * metodo post di inserimento del medico
-     * il medico inserito viene validato, se la verifica è corretta
-     * viene settato il path del file dell'immagine del profilo del medico
-     * @param medico
-     * @param model
-     * @param bindingResult
-     * @param multipartFile
-     * @return String
-     * @throws IOException
-     */
+
     @RequestMapping(value = "/admin/meccanico", method = RequestMethod.POST)
     public String addMeccanico(@ModelAttribute("meccanico") Meccanico meccanico, 
     									Model model, BindingResult bindingResult, @RequestParam("image") MultipartFile multipartFile) throws IOException {
